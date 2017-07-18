@@ -1,0 +1,22 @@
+Install:
+ robotpkg/supervision/tcl-genomix
+ robotpkg/shell/eltclsh
+
+Run:
+ roscore
+ genomixd &
+ optitrack-ros -b
+
+ eltclsh
+
+In the eltclsh shell, run:
+
+ package require genomix
+ set client [genomix::connect localhost]
+ $client load optitrack
+
+ ::optitrack::connect {
+    host marey host_port 1510 mcast 239.192.168.30 mcast_port 1511
+ }
+
+run rostopic list in another terminal to see all the bodies and echo accordingly.
