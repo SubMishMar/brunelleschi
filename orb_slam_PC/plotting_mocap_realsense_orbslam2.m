@@ -8,7 +8,7 @@ plot(time, orbslam2_data(:,1),'b','LineWidth',1);
 hold off;
 grid;
 legend('MoCap','RealSenseSlam','ORB\_SLAM2');
-title('Comparison: X axis');
+title('Comparison: X axis', 'Interpreter','latex');
 xlabel('Time[s] since epoch')
 ylabel('X[m]');
 
@@ -21,7 +21,7 @@ plot(time, orbslam2_data(:,2),'b','LineWidth',1);
 hold off;
 grid;
 legend('MoCap','RealSenseSlam','ORB\_SLAM2');
-title('Comparison: Y axis');
+title('Comparison: Y axis', 'Interpreter','latex');
 xlabel('Time[s] since epoch')
 ylabel('Y[m]');
 
@@ -34,7 +34,7 @@ plot(time, orbslam2_data(:,3),'b','LineWidth',1);
 hold off;
 grid;
 legend('MoCap','RealSenseSlam','ORB\_SLAM2');
-title('Comparison: Z axis');
+title('Comparison: Z axis','Interpreter','latex');
 xlabel('Time[s] since epoch')
 ylabel('Z[m]');
 
