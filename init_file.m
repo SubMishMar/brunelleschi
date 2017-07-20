@@ -13,20 +13,21 @@ disp('Linking Libraries and Dependencies');
 openrobots_folder=[getenv('ROBOTPKG_BASE'),'/lib/matlab'];
 addpath(genpath(openrobots_folder));
 
-%% Linking Optitrack to Matlab via genomix
+%% Creating Genomix Client
 client = genomix.client();
 
-%%
+%% Linking Optitrack to Matlab via genomix
 opti=client.load('optitrack');
 pause(2);
 result = opti.connect('marey','1510','239.192.168.30','1511');
 string = ['Connecting to MoCap: ',result.status];
 disp(string);
 
-% pom = client.load('pom');
-% pause(2);
-% result = pom.connect_port('measure/mocap', 'optitrack/bodies/brunelleschi');
-% pause(2);
-% string = ['Initializing 1st connection of POM: ',result.status];
-% pom.add_measurement('mocap');
-% disp(string);
+%% Adding Optitrack Measurements to POM
+pom = client.load('pom');
+pause(2);
+result = pom.connect_port('measure/mocap', 'optitrack/bodies/brunelleschi');
+pause(2);
+string = ['Initializing 1st connection of POM: ',result.status];
+pom.add_measurement('mocap');
+disp(string);

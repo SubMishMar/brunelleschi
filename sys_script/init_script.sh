@@ -21,7 +21,7 @@ launching()
 }
 
 #list of programs
-PROGRAMS='roscore genomixd optitrack-ros'
+PROGRAMS='roscore genomixd optitrack-ros pom-ros'
 
 #invoking function
 for PROGRAM in $PROGRAMS
