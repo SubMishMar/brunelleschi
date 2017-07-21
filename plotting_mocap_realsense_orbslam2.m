@@ -1,10 +1,10 @@
-twist = 0;
+twist = 1;
 
 %%
 figure('Name','Pose Comparison','NumberTitle','off');
 
 subplot(321)
-plot(time, mocap_pose(:,1),'r','LineWidth',1);
+plot(time, mocap_pose(:,1),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,1),'g','LineWidth',1);
 hold on;
@@ -17,7 +17,7 @@ xlabel('Time[s] since epoch')
 ylabel('X[m]');
 
 subplot(323)
-plot(time, mocap_pose(:,2),'r','LineWidth',1);
+plot(time, mocap_pose(:,2),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,2),'g','LineWidth',1);
 hold on;
@@ -30,7 +30,7 @@ xlabel('Time[s] since epoch')
 ylabel('Y[m]');
 
 subplot(325)
-plot(time, mocap_pose(:,3),'r','LineWidth',1);
+plot(time, mocap_pose(:,3),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,3),'g','LineWidth',1);
 hold on;
@@ -43,7 +43,7 @@ xlabel('Time[s] since epoch')
 ylabel('Z[m]');
 
 subplot(322)
-plot(time, mocap_pose(:,4),'r','LineWidth',1);
+plot(time, mocap_pose(:,4),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,4),'g','LineWidth',1);
 hold on;
@@ -56,7 +56,7 @@ xlabel('Time[s] since epoch')
 ylabel('$\phi^{\circ}$','Interpreter','latex');
 
 subplot(324)
-plot(time, mocap_pose(:,5),'r','LineWidth',1);
+plot(time, mocap_pose(:,5),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,5),'g','LineWidth',1);
 hold on;
@@ -69,7 +69,7 @@ xlabel('Time[s] since epoch')
 ylabel('$\theta^{\circ}$','Interpreter','latex');
 
 subplot(326)
-plot(time, mocap_pose(:,6),'r','LineWidth',1);
+plot(time, mocap_pose(:,6),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_pose(:,6),'g','LineWidth',1);
 hold on;
@@ -86,7 +86,7 @@ if twist == 1
 figure('Name','Twist Comparison','NumberTitle','off');
 
 subplot(321)
-plot(time, mocap_twist(:,1),'r','LineWidth',1);
+plot(time, mocap_twist(:,1),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,1),'g','LineWidth',1);
 hold on;
@@ -99,7 +99,7 @@ xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$V_x$ [m/s]', 'Interpreter','latex');
 
 subplot(323)
-plot(time, mocap_twist(:,2),'r','LineWidth',1);
+plot(time, mocap_twist(:,2),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,2),'g','LineWidth',1);
 hold on;
@@ -112,7 +112,7 @@ xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$V_y$ [m/s]', 'Interpreter','latex');
 
 subplot(325)
-plot(time, mocap_twist(:,3),'r','LineWidth',1);
+plot(time, mocap_twist(:,3),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,3),'g','LineWidth',1);
 hold on;
@@ -125,7 +125,7 @@ xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$V_z$ [m/s]', 'Interpreter','latex');
 
 subplot(322)
-plot(time, mocap_twist(:,4),'r','LineWidth',1);
+plot(time, mocap_twist(:,4),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,4),'g','LineWidth',1);
 hold on;
@@ -138,7 +138,7 @@ xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$\omega_x$ [rad/s]', 'Interpreter','latex');
 
 subplot(324)
-plot(time, mocap_twist(:,5),'r','LineWidth',1);
+plot(time, mocap_twist(:,5),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,5),'g','LineWidth',1);
 hold on;
@@ -151,7 +151,7 @@ xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$\omega_y$ [rad/s]', 'Interpreter','latex');
 
 subplot(326)
-plot(time, mocap_twist(:,6),'r','LineWidth',1);
+plot(time, mocap_twist(:,6),'--r','LineWidth',1);
 hold on;
 plot(time, realsense_twist(:,6),'g','LineWidth',1);
 hold on;
@@ -174,7 +174,7 @@ plot3(mocap_pose(end,1), mocap_pose(end,2), mocap_pose(end,3),'-s','MarkerEdgeCo
     'MarkerFaceColor',[1 0 0],...
     'MarkerSize',10);
 hold on;
-p1=plot3(mocap_pose(:,1), mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+p1=plot3(mocap_pose(:,1), mocap_pose(:,2), mocap_pose(:,3), '--r', 'LineWidth', 1);
 hold on;
 plot3(realsense_pose(1,1), realsense_pose(1,2), realsense_pose(1,3),'-ko','MarkerEdgeColor','k',...
     'MarkerFaceColor',[0 1 0],...
@@ -213,7 +213,7 @@ plot(mocap_pose(end,1), mocap_pose(end,2),'-s','MarkerEdgeColor','k',...
     'MarkerFaceColor',[1 0 0],...
     'MarkerSize',10);
 hold on;
-q1=plot(mocap_pose(:,1), mocap_pose(:,2), 'r', 'LineWidth', 1);
+q1=plot(mocap_pose(:,1), mocap_pose(:,2), '--r', 'LineWidth', 1);
 hold on;
 plot(realsense_pose(1,1), realsense_pose(1,2),'-ko','MarkerEdgeColor','k',...
     'MarkerFaceColor',[0 1 0],...
@@ -251,7 +251,7 @@ plot(mocap_pose(end,2), mocap_pose(end,3),'-s','MarkerEdgeColor','k',...
     'MarkerFaceColor',[1 0 0],...
     'MarkerSize',10);
 hold on;
-r1=plot(mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+r1=plot(mocap_pose(:,2), mocap_pose(:,3), '--r', 'LineWidth', 1);
 hold on;
 plot(realsense_pose(1,2), realsense_pose(1,3),'-ko','MarkerEdgeColor','k',...
     'MarkerFaceColor',[0 1 0],...
@@ -289,7 +289,7 @@ plot(mocap_pose(end,3), mocap_pose(end,1),'-s','MarkerEdgeColor','k',...
     'MarkerFaceColor',[1 0 0],...
     'MarkerSize',10);
 hold on;
-s1=plot(mocap_pose(:,3), mocap_pose(:,1), 'r', 'LineWidth', 1);
+s1=plot(mocap_pose(:,3), mocap_pose(:,1), '--r', 'LineWidth', 1);
 hold on;
 plot(realsense_pose(1,3), realsense_pose(1,1),'-ko','MarkerEdgeColor','k',...
     'MarkerFaceColor',[0 1 0],...
