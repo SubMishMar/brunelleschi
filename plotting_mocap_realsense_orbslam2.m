@@ -1,3 +1,5 @@
+twist = 0;
+
 %%
 figure('Name','Pose Comparison','NumberTitle','off');
 
@@ -80,6 +82,7 @@ xlabel('Time[s] since epoch')
 ylabel('$\psi^{\circ}$','Interpreter','latex');
 
 %%
+if twist == 1
 figure('Name','Twist Comparison','NumberTitle','off');
 
 subplot(321)
@@ -160,16 +163,41 @@ title('Comparison: $\omega_z$ ', 'Interpreter','latex');
 xlabel('Time[s] since epoch', 'Interpreter','latex')
 ylabel('$\omega_z$ [rad/s]', 'Interpreter','latex');
 
+end
 %%
 figure('Name','Position Comparison 3D','NumberTitle','off');
-plot3(mocap_pose(:,1), mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+plot3(mocap_pose(1,1), mocap_pose(1,2), mocap_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot3(realsense_pose(:,1), realsense_pose(:,2), realsense_pose(:,3), 'g', 'LineWidth', 1);
+plot3(mocap_pose(end,1), mocap_pose(end,2), mocap_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot3(orbslam2_pose(:,1), orbslam2_pose(:,2), orbslam2_pose(:,3), 'b', 'LineWidth', 1);
+p1=plot3(mocap_pose(:,1), mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+hold on;
+plot3(realsense_pose(1,1), realsense_pose(1,2), realsense_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+plot3(realsense_pose(end,1), realsense_pose(end,2), realsense_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+p2=plot3(realsense_pose(:,1), realsense_pose(:,2), realsense_pose(:,3), 'g', 'LineWidth', 1);
+hold on;
+plot3(orbslam2_pose(1,1), orbslam2_pose(1,2), orbslam2_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+plot3(orbslam2_pose(end,1), orbslam2_pose(end,2), orbslam2_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+p3=plot3(orbslam2_pose(:,1), orbslam2_pose(:,2), orbslam2_pose(:,3), 'b', 'LineWidth', 1);
 hold off;
 grid;
-legend('','MoCap','RealSenseSlam','ORB\_SLAM2');
+legend([p1, p2, p3],'MoCap','RealSenseSlam','ORB\_SLAM2');
 title('3D-Trajectory', 'Interpreter','latex');
 xlabel('X[m]', 'Interpreter','latex')
 ylabel('Y[m]', 'Interpreter','latex')
@@ -177,42 +205,114 @@ zlabel('Z[m]', 'Interpreter','latex')
 
 %%
 figure('Name','Position Comparison XY Plane','NumberTitle','off');
-plot(mocap_pose(:,1), mocap_pose(:,2), 'r', 'LineWidth', 1);
+plot(mocap_pose(1,1), mocap_pose(1,2),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(realsense_pose(:,1), realsense_pose(:,2), 'g', 'LineWidth', 1);
+plot(mocap_pose(end,1), mocap_pose(end,2),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(orbslam2_pose(:,1), orbslam2_pose(:,2),  'b', 'LineWidth', 1);
+q1=plot(mocap_pose(:,1), mocap_pose(:,2), 'r', 'LineWidth', 1);
+hold on;
+plot(realsense_pose(1,1), realsense_pose(1,2),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+plot(realsense_pose(end,1), realsense_pose(end,2),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+q2=plot(realsense_pose(:,1), realsense_pose(:,2), 'g', 'LineWidth', 1);
+hold on;
+plot(orbslam2_pose(1,1), orbslam2_pose(1,2),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+plot(orbslam2_pose(end,1), orbslam2_pose(end,2),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+q3=plot(orbslam2_pose(:,1), orbslam2_pose(:,2),  'b', 'LineWidth', 1);
 hold off;
 grid;
-legend('MoCap','RealSenseSlam','ORB\_SLAM2');
+legend([q1,q2,q3],'MoCap','RealSenseSlam','ORB\_SLAM2');
 title('XY-Trajectory', 'Interpreter','latex');
 xlabel('X[m]', 'Interpreter','latex')
 ylabel('Y[m]', 'Interpreter','latex')
 
 %%
 figure('Name','Position Comparison YZ Plane','NumberTitle','off');
-plot(mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+plot(mocap_pose(1,2), mocap_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(realsense_pose(:,2), realsense_pose(:,3), 'g', 'LineWidth', 1);
+plot(mocap_pose(end,2), mocap_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(orbslam2_pose(:,2), orbslam2_pose(:,3),  'b', 'LineWidth', 1);
+r1=plot(mocap_pose(:,2), mocap_pose(:,3), 'r', 'LineWidth', 1);
+hold on;
+plot(realsense_pose(1,2), realsense_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+plot(realsense_pose(end,2), realsense_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+r2=plot(realsense_pose(:,2), realsense_pose(:,3), 'g', 'LineWidth', 1);
+hold on;
+plot(orbslam2_pose(1,2), orbslam2_pose(1,3),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+plot(orbslam2_pose(end,2), orbslam2_pose(end,3),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+r3=plot(orbslam2_pose(:,2), orbslam2_pose(:,3),  'b', 'LineWidth', 1);
 hold off;
 grid;
-legend('MoCap','RealSenseSlam','ORB\_SLAM2');
+legend([r1,r2,r3],'MoCap','RealSenseSlam','ORB\_SLAM2');
 title('YZ-Trajectory', 'Interpreter','latex');
 xlabel('Y[m]', 'Interpreter','latex')
 ylabel('Z[m]', 'Interpreter','latex')
 
 %%
 figure('Name','Position Comparison ZX Plane','NumberTitle','off');
-plot(mocap_pose(:,3), mocap_pose(:,1), 'r', 'LineWidth', 1);
+plot(mocap_pose(1,3), mocap_pose(1,1),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(realsense_pose(:,3), realsense_pose(:,1), 'g', 'LineWidth', 1);
+plot(mocap_pose(end,3), mocap_pose(end,1),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[1 0 0],...
+    'MarkerSize',10);
 hold on;
-plot(orbslam2_pose(:,3), orbslam2_pose(:,1),  'b', 'LineWidth', 1);
+s1=plot(mocap_pose(:,3), mocap_pose(:,1), 'r', 'LineWidth', 1);
+hold on;
+plot(realsense_pose(1,3), realsense_pose(1,1),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+plot(realsense_pose(end,3), realsense_pose(end,1),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 1 0],...
+    'MarkerSize',10);
+hold on;
+s2=plot(realsense_pose(:,3), realsense_pose(:,1), 'g', 'LineWidth', 1);
+hold on;
+plot(orbslam2_pose(1,3), orbslam2_pose(1,1),'-ko','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+plot(orbslam2_pose(end,3), orbslam2_pose(end,1),'-s','MarkerEdgeColor','k',...
+    'MarkerFaceColor',[0 0 1],...
+    'MarkerSize',10);
+hold on;
+s3=plot(orbslam2_pose(:,3), orbslam2_pose(:,1),  'b', 'LineWidth', 1);
 hold off;
 grid;
-legend('MoCap','RealSenseSlam','ORB\_SLAM2');
+legend([s1,s2,s3],'MoCap','RealSenseSlam','ORB\_SLAM2');
 title('ZX-Trajectory', 'Interpreter','latex');
 xlabel('Z[m]', 'Interpreter','latex')
 ylabel('X[m]', 'Interpreter','latex')
