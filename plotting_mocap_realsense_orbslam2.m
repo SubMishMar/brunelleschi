@@ -1,4 +1,5 @@
-twist = 1;
+load posedata.mat
+twist = 0;
 
 %%
 figure('Name','Pose Comparison','NumberTitle','off');

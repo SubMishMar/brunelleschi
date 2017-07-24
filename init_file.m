@@ -3,7 +3,7 @@
 % % Forcing a new path to LD_LIBRARY_PATH
 % setenv('LD_LIBRARY_PATH','/opt/ros/indigo/lib:/opt/ros/indigo/lib/x86_64-linux-gnu');
 % % launching required packages 
-% status1 = system('sys_script/init_script.sh'); 
+%status1 = system('sys_script/init_script.sh'); 
 % setenv('LD_LIBRARY_PATH',old_env); %Restoring the old path of LD_LIBRARY_PATH
 
 %% Initialize path for dependencies and libraries

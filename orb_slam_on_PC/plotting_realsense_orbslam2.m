@@ -1,3 +1,5 @@
+load Trial1/posedata.mat
+twist = 0;
 %%
 subplot(321)
 plot(time, realsense_pose(:,1),'g','LineWidth',1);
