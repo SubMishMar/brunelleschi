@@ -26,7 +26,7 @@ disp(string);
 %% Adding Optitrack Measurements to POM
 pom = client.load('pom');
 pause(2);
-result = pom.connect_port('measure/mocap', '/optitrack/bodies/brunelleschi');
+result = pom.connect_port('measure/mocap', '/optitrack/bodies/OTHex');
 pause(2);
 string = ['Initializing 1st connection of POM: ',result.status];
 pom.add_measurement('mocap');

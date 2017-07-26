@@ -37,3 +37,15 @@ Now one can visualize the data either by using rviz or using the rosix/genomix b
 Component: manager
 **After this, click on "Fetch signal descriptions", This will show the available topics in the "Port" drop down menu. Choose the appropriate topic and then add the required fields of that topic using the add button in the same dialog box.
 **For getting the odometry/pose data published by ORB_SLAM2 node, we dont need to change the host (because orb_slam2 is running on the euclid device) but need to change the name of the component to ORB_SLAM2 and next the procedure is same as given in case 1.
+
+
+%%%% Steps while running experiments with the camera on board the OTHex
+1. Turn on the camera.
+2. Connect the serial port to the OTHex in the correct order
+3. Connect the power source to the OTHex.
+4. Start all components in your PC.
+5. Run the init file.
+6. Open the simulink file.
+7. Run the slam algorithms on the device or your pc or both using steps given above.
+8. Run the initialize_position.slx to find the initial position.
+9. Then run the simulink file for the OTHex.
