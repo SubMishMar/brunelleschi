@@ -1,1 +1,3 @@
 orbslam running on PC with usual parameters
+ORBextractor.nFeatures: 1000
+
